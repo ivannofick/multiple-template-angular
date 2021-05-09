@@ -1,0 +1,44 @@
+<div [ngClass]="sideBar" id="wrapper">
+    <!-- Sidebar-->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom">Hospital</div>
+        <div class="list-group list-group-flush" *ngFor="let menu of navItems; i as index;">
+            <a class="list-group-item list-group-item-action bg-light border-bottom" href="#!" [routerLink]="menu.url">
+                <i [ngClass]="menu.icon"></i>
+                {{ menu.name }}
+            </a>
+        </div>
+    </div>
+    <!-- Page Content-->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-default" id="menu-toggle" (click)="openSideBar('sideBar')"><span class="navbar-toggler-icon"></span></button>
+            <button [ngClass]="navBar" type="button" (click)="openNavBar('sideBar')" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="navBar == 'navbar-toggler'" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div [ngClass]="navCollapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li [ngClass]="dropdownNav">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="dropdownNav == 'nav-item dropdown'" (click)="showDropdownNav($event)">Deny Siregar</a>
+                        <div [ngClass]="dropdownNavRight" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#!">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav> 
+        <div class="body body-dashboard">
+            <router-outlet></router-outlet>
+        </div>
+        <footer class="bg-dark text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3 text-light">
+              © 2020 Copyright:
+              <a class="text-light" href="https://github.com/ivannofick/">hospital.com</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+    </div>
+  </div>
